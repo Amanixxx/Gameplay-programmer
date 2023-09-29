@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 8e51d4a169668b8418e972c829c39240
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _musicAudioSource: {instanceID: 0}
+  - _soundAudioSource: {instanceID: 0}
+  - Jump: {instanceID: 0}
+  - Walk: {instanceID: 0}
+  - Fall: {fileID: 8300000, guid: 63077b8d27c921d4396dc1d5d9c7d839, type: 3}
+  - Attack: {instanceID: 0}
+  - Eat: {instanceID: 0}
+  - Box: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
