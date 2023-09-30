@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour, Iplatform
     private void Update()
     {
         bool isrunning = animator.GetBool("isRuning");
-        bool RunKey=Input.GetKey(KeyCode.Alpha0);
+        bool RunKey=Input.GetKey(KeyCode.R);
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
          moveInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         // player on ground
         if (grounded)
         {
+            readyToJump = true;
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
             animator.SetBool("isFalling", false);
             canDoubleJump = true;
@@ -136,7 +137,7 @@ public class PlayerMovement : MonoBehaviour, Iplatform
             Debug.Log("jumping");
             Jump();
 
-            Invoke(nameof(ResetJump), jumpCooldown);
+          //  Invoke(nameof(ResetJump), jumpCooldown);
         } else
         {
             animator.SetBool("isJump", false);
@@ -164,9 +165,9 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
-    private void ResetJump()
-    {
-        readyToJump = true;
-    }
+    // private void ResetJump()
+    // {
+    //  
+    // }
 }
 
