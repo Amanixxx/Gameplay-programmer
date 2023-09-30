@@ -1,7 +1,7 @@
 # Gameplay-programmer
 Unity project - Version 2021.3.22f1 LTS
 
-## This project made for (+مبادرة تواصل)
+## This project made for (+مبادرة تدريب المحتوى الرقمي تواصل)
 
 # Content 
 Player Control and Animation (Unity - C#)
