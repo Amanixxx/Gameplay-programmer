@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
             // start the attack 
             animator.SetBool("Attack",true);
             Debug.Log("the player attake");
-            SoundManager.Instance.PlayAttackSound();
+//            SoundManager.Instance.PlayAttackSound();
         }
         else
         {

@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         if (!isrunning &&  RunKey)
         {   //check if the player running and press the run key
             animator.SetBool("isRuning", true);
+            moveSpeed = 7f;
             animator.SetBool("isMoving", false);
            
             Debug.Log("runing now");
@@ -93,6 +94,7 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         {
             //check if the player not running and (he is moving OR not press the run key)
             //stop Running
+            moveSpeed = 5f;
             animator.SetBool("isRuning", false);
         
         }
@@ -165,9 +167,6 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
-    // private void ResetJump()
-    // {
-    //  
-    // }
+   
 }
 
