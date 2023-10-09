@@ -9,15 +9,14 @@ public class PlayerMovement : MonoBehaviour, Iplatform
     public float groundDrag;
 
     public float jumpForce;
-    public float jumpCooldown;
+  
     public float airMultiplier;
     bool readyToJump;
 
     
 
     [Header("Keybinds")] public KeyCode jumpKey = KeyCode.Space;
-     
-
+    
     [Header("Ground Check")] public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
@@ -48,6 +47,8 @@ public class PlayerMovement : MonoBehaviour, Iplatform
     {
         bool isrunning = animator.GetBool("isRuning");
         bool RunKey=Input.GetKey(KeyCode.R);
+        bool isCrouch = animator.GetBool("isCrouch");
+        bool CrouchKey  =Input.GetKey(KeyCode.C);
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
          moveInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
@@ -64,7 +65,8 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         { 
             // start walking
             animator.SetBool("isMoving", true);
-            SoundManager.Instance.PlayWalkSound();
+            moveSpeed = 4F; 
+//            SoundManager.Instance.PlayWalkSound();
         }
         else if (moveInput.magnitude > 0 && !grounded)
         { 
@@ -76,6 +78,31 @@ public class PlayerMovement : MonoBehaviour, Iplatform
         {
             //stop walking
             animator.SetBool("isMoving", false);
+        }
+        //  crouching 
+        if (!isCrouch &&  CrouchKey  && moveInput.magnitude > 0 )
+        {   //check if the player crouching and press the crouch key
+            animator.SetBool("isCrouch", true);
+            animator.SetBool("isStanding", false);
+            moveSpeed = 2f;
+            Debug.Log("crouching now");
+        }
+        if (isCrouch &&  CrouchKey)
+        {   //check if the player crouching and press the crouch key
+            animator.SetBool("isCrouch", true);
+            animator.SetBool("isStanding", false);
+            moveSpeed = 2f;
+            Debug.Log("crouching now");
+        }
+        if (isCrouch && (moveInput.magnitude == 0 || !CrouchKey ))
+        {
+            //check if the player not Crouch and (he is not moving OR not press the Crouch key)
+            //stop Running
+           
+            animator.SetBool("isCrouch", false);
+            animator.SetBool("isStanding", true);
+            moveSpeed = 5f;
+        
         }
         //calculate movement direction
 
